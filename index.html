@@ -1,0 +1,2318 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#071e45" />
+    <title>Você é Max! — Plano de Experiência do Colaborador</title>
+    <meta
+      name="description"
+      content="Plano interativo de onboarding, cultura, processos, desenvolvimento e People Analytics da Max Imóveis."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --blue: #071e45;
+        --blue2: #0d3a74;
+        --yellow: #ffcd19;
+        --cream: #f7f8fb;
+        --ink: #101828;
+        --muted: #59657a;
+        --line: #dfe5ee;
+        --white: #fff;
+        --green: #1c8b69;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: Manrope, system-ui, sans-serif;
+        color: var(--ink);
+        background: var(--cream);
+        font-size: 16px;
+        line-height: 1.55;
+      }
+      button,
+      a {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      a {
+        color: inherit;
+      }
+      .shell {
+        width: min(1180px, calc(100% - 40px));
+        margin: auto;
+      }
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(7, 30, 69, 0.95);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .navin {
+        height: 74px;
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+      .brand {
+        font-family: Montserrat;
+        font-size: 1.25rem;
+        font-weight: 900;
+        color: white;
+        text-decoration: none;
+        margin-right: auto;
+      }
+      .brand span {
+        color: var(--yellow);
+      }
+      .navlinks {
+        display: flex;
+        gap: 22px;
+      }
+      .navlinks a {
+        color: #dce7f8;
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+      .navlinks a:hover {
+        color: var(--yellow);
+      }
+      .pill {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 999px;
+        padding: 8px 12px;
+        color: white;
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+      .hero {
+        background: var(--blue);
+        color: white;
+        min-height: 690px;
+        display: grid;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            115deg,
+            transparent 48%,
+            rgba(255, 205, 25, 0.09) 48%
+          ),
+          repeating-linear-gradient(
+            90deg,
+            transparent 0 79px,
+            rgba(255, 255, 255, 0.035) 80px
+          );
+      }
+      .hero:after {
+        content: "MAX";
+        position: absolute;
+        right: -30px;
+        bottom: -100px;
+        font-family: Montserrat;
+        font-size: 25vw;
+        font-weight: 900;
+        color: rgba(255, 255, 255, 0.025);
+        line-height: 1;
+      }
+      .heroGrid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 70px;
+        align-items: center;
+        padding: 86px 0;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        text-transform: uppercase;
+        letter-spacing: 0.13em;
+        font-size: 0.78rem;
+        font-weight: 800;
+        color: var(--yellow);
+      }
+      .eyebrow:before {
+        content: "";
+        width: 26px;
+        height: 3px;
+        background: var(--yellow);
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: Montserrat;
+        line-height: 1.08;
+        margin: 0;
+      }
+      h1 {
+        font-size: clamp(3.2rem, 7vw, 6.8rem);
+        letter-spacing: -0.06em;
+        margin: 18px 0 24px;
+      }
+      h1 em {
+        font-style: normal;
+        color: var(--yellow);
+      }
+      .lead {
+        font-size: 1.22rem;
+        max-width: 680px;
+        color: #dce7f8;
+        margin: 0 0 32px;
+      }
+      .heroActions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        border: 0;
+        border-radius: 10px;
+        padding: 14px 20px;
+        font-weight: 800;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .primary {
+        background: var(--yellow);
+        color: var(--blue);
+      }
+      .secondary {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: white;
+      }
+      .heroCard {
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.07);
+        padding: 28px;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      }
+      .heroCard strong {
+        font-family: Montserrat;
+        font-size: 3rem;
+        color: var(--yellow);
+      }
+      .heroCard p {
+        color: #dce7f8;
+      }
+      .miniGrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 24px;
+      }
+      .mini {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 14px;
+        border-radius: 12px;
+        font-size: 0.84rem;
+      }
+      .mini b {
+        display: block;
+        color: white;
+      }
+      section {
+        padding: 92px 0;
+      }
+      .sectionHead {
+        display: grid;
+        grid-template-columns: 0.75fr 1.25fr;
+        gap: 60px;
+        margin-bottom: 42px;
+      }
+      .sectionHead h2 {
+        font-size: clamp(2.2rem, 4.6vw, 4.4rem);
+        letter-spacing: -0.045em;
+        color: var(--blue);
+      }
+      .sectionHead p {
+        font-size: 1.06rem;
+        color: var(--muted);
+        margin: 8px 0;
+      }
+      .kicker {
+        color: var(--blue2);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 0.78rem;
+        margin-bottom: 12px;
+      }
+      .journey {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+      .phase {
+        background: white;
+        border: 1px solid var(--line);
+        border-top: 5px solid var(--yellow);
+        padding: 25px;
+        border-radius: 14px;
+        min-height: 220px;
+      }
+      .num {
+        color: var(--blue2);
+        font-weight: 900;
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+      }
+      .phase h3 {
+        font-size: 1.18rem;
+        margin: 28px 0 10px;
+      }
+      .phase p {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin: 0;
+      }
+      .dark {
+        background: var(--blue);
+        color: white;
+      }
+      .dark .sectionHead h2,
+      .dark h3 {
+        color: white;
+      }
+      .dark .sectionHead p {
+        color: #c6d5e9;
+      }
+      .accordion {
+        display: grid;
+        gap: 12px;
+      }
+      .topic {
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.055);
+        overflow: hidden;
+      }
+      .topic button {
+        width: 100%;
+        padding: 19px 22px;
+        border: 0;
+        background: none;
+        color: white;
+        display: grid;
+        grid-template-columns: 42px 1fr auto;
+        gap: 14px;
+        align-items: center;
+        text-align: left;
+        font-weight: 800;
+      }
+      .topic button span:first-child {
+        color: var(--yellow);
+        font-family: Montserrat;
+      }
+      .topic button i {
+        font-style: normal;
+        font-size: 1.3rem;
+        transition: 0.2s;
+      }
+      .topic .body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      .topic .body p {
+        margin: 0;
+        padding: 0 78px 22px;
+        color: #cbd8ea;
+      }
+      .topic.open .body {
+        max-height: 160px;
+      }
+      .topic.open button i {
+        transform: rotate(45deg);
+      }
+      .kitgrid {
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 40px;
+        align-items: center;
+      }
+      .kitimg {
+        min-height: 430px;
+        border-radius: 22px;
+        overflow: hidden;
+        background: linear-gradient(140deg, #0d3a74, #071e45);
+        border: 1px solid var(--line);
+        display: grid;
+        place-items: center;
+        color: white;
+        position: relative;
+      }
+      .kitimg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .kitfallback {
+        padding: 35px;
+        text-align: center;
+      }
+      .kitfallback strong {
+        font-family: Montserrat;
+        font-size: 2rem;
+        color: var(--yellow);
+      }
+      .checklist {
+        display: grid;
+        gap: 12px;
+        margin-top: 24px;
+      }
+      .check {
+        display: flex;
+        gap: 13px;
+        align-items: flex-start;
+        padding: 15px;
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+      }
+      .check b {
+        color: var(--blue);
+      }
+      .check span:first-child {
+        background: var(--yellow);
+        color: var(--blue);
+        font-weight: 900;
+        border-radius: 50%;
+        min-width: 27px;
+        height: 27px;
+        display: grid;
+        place-items: center;
+        font-size: 0.8rem;
+      }
+      .campaign {
+        background: var(--yellow);
+        color: var(--blue);
+        padding: 38px;
+        border-radius: 22px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 32px;
+        align-items: center;
+      }
+      .campaign h2 {
+        font-size: clamp(2.6rem, 6vw, 5.8rem);
+        letter-spacing: -0.06em;
+      }
+      .campaign p {
+        font-size: 1.1rem;
+      }
+      .quote {
+        border-left: 4px solid var(--blue);
+        padding-left: 22px;
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+      .event {
+        display: grid;
+        gap: 10px;
+      }
+      .event div {
+        background: rgba(255, 255, 255, 0.55);
+        border-radius: 11px;
+        padding: 13px 16px;
+        font-weight: 700;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .card {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+      }
+      .card .tag {
+        align-self: flex-start;
+        background: #eaf0fa;
+        color: var(--blue2);
+        padding: 5px 9px;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+      .card h3 {
+        font-size: 1.25rem;
+        color: var(--blue);
+        margin: 28px 0 11px;
+      }
+      .card p {
+        color: var(--muted);
+        font-size: 0.91rem;
+      }
+      .card button {
+        margin-top: auto;
+        background: none;
+        border: 0;
+        color: var(--blue2);
+        font-weight: 800;
+        text-align: left;
+        padding: 10px 0 0;
+      }
+      .card button:hover {
+        text-decoration: underline;
+      }
+      .roadmap {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+        margin-top: 35px;
+      }
+      .step {
+        border-top: 4px solid var(--line);
+        padding: 25px 20px 0 0;
+        position: relative;
+      }
+      .step:before {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--yellow);
+        border: 4px solid var(--blue);
+        top: -10px;
+        left: 0;
+      }
+      .step small {
+        font-weight: 800;
+        color: var(--blue2);
+      }
+      .step h3 {
+        font-size: 1.05rem;
+        color: var(--blue);
+        margin: 8px 0;
+      }
+      .step p {
+        font-size: 0.87rem;
+        color: var(--muted);
+      }
+      .metrics {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 28px;
+      }
+      .panel {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 28px;
+      }
+      .panel h3 {
+        color: var(--blue);
+        margin-bottom: 20px;
+      }
+      .formula {
+        background: var(--blue);
+        color: white;
+        border-radius: 13px;
+        padding: 20px;
+        margin: 15px 0;
+      }
+      .formula b {
+        color: var(--yellow);
+        font-size: 1.15rem;
+      }
+      .dataList {
+        display: grid;
+        gap: 9px;
+      }
+      .dataList span {
+        padding: 11px 12px;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        font-size: 0.89rem;
+      }
+      .flow {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .flow div {
+        padding: 16px;
+        border-radius: 12px;
+        background: #eef2f8;
+      }
+      .flow b {
+        display: block;
+        color: var(--blue);
+      }
+      .note {
+        border-left: 4px solid var(--yellow);
+        padding: 12px 16px;
+        background: #fff9df;
+        margin-top: 18px;
+        color: #4d4a38;
+        font-size: 0.88rem;
+      }
+      .finish {
+        background: var(--blue);
+        color: white;
+        text-align: center;
+        padding: 110px 0;
+      }
+      .finish h2 {
+        font-size: clamp(3.2rem, 8vw, 8rem);
+        letter-spacing: -0.07em;
+      }
+      .finish h2 span {
+        color: var(--yellow);
+      }
+      .finish p {
+        color: #cbd8ea;
+        font-size: 1.1rem;
+        max-width: 660px;
+        margin: 24px auto 0;
+      }
+      .footer {
+        background: #04132c;
+        color: #9fb2cd;
+        padding: 24px 0;
+        font-size: 0.82rem;
+      }
+      .footer .shell {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      dialog {
+        border: 0;
+        border-radius: 18px;
+        padding: 0;
+        width: min(630px, calc(100% - 30px));
+        box-shadow: 0 30px 100px rgba(0, 0, 0, 0.35);
+      }
+      dialog::backdrop {
+        background: rgba(3, 14, 33, 0.75);
+        backdrop-filter: blur(4px);
+      }
+      .modal {
+        padding: 30px;
+      }
+      .modal h3 {
+        color: var(--blue);
+        font-size: 1.55rem;
+      }
+      .modal p,
+      .modal li {
+        color: var(--muted);
+      }
+      .close {
+        float: right;
+        border: 0;
+        background: #edf1f7;
+        border-radius: 50%;
+        width: 38px;
+        height: 38px;
+        font-size: 1.2rem;
+      }
+      .bi {
+        background: #061a36;
+        color: white;
+      }
+      .bi .sectionHead h2 {
+        color: white;
+      }
+      .bi .sectionHead p {
+        color: #bdd0e8;
+      }
+      .biToolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-bottom: 18px;
+      }
+      .biToolbar label {
+        font-weight: 800;
+        font-size: 0.84rem;
+        color: #bed0e7;
+      }
+      .biToolbar select {
+        margin-left: 9px;
+        background: #102b53;
+        color: white;
+        border: 1px solid #36557d;
+        border-radius: 8px;
+        padding: 10px 34px 10px 12px;
+      }
+      .coverage {
+        color: #92a9c5;
+        font-size: 0.8rem;
+      }
+      .kpis {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+      }
+      .kpi {
+        background: #0d284e;
+        border: 1px solid #24456e;
+        border-radius: 12px;
+        padding: 18px;
+      }
+      .kpi small {
+        display: block;
+        color: #9eb5d0;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .kpi strong {
+        font-family: Montserrat;
+        font-size: 1.65rem;
+        color: white;
+      }
+      .kpi em {
+        display: block;
+        color: var(--yellow);
+        font-style: normal;
+        font-size: 0.72rem;
+        margin-top: 7px;
+      }
+      .vizgrid {
+        display: grid;
+        grid-template-columns: 1.35fr 0.65fr;
+        gap: 14px;
+        margin-top: 14px;
+      }
+      .viz {
+        background: white;
+        color: var(--ink);
+        border-radius: 14px;
+        padding: 22px;
+        min-height: 300px;
+      }
+      .viz h3 {
+        color: var(--blue);
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+      .columns {
+        height: 215px;
+        display: flex;
+        align-items: flex-end;
+        gap: 12px;
+        border-bottom: 1px solid #cad4e2;
+        padding: 0 8px;
+      }
+      .col {
+        height: 100%;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 7px;
+      }
+      .col b {
+        font-size: 0.72rem;
+        color: #54647a;
+      }
+      .bar {
+        width: 70%;
+        min-width: 18px;
+        background: linear-gradient(180deg, var(--yellow), #e7a900);
+        border-radius: 6px 6px 0 0;
+        transition: 0.25s;
+        position: relative;
+      }
+      .bar:after {
+        content: attr(data-exits);
+        position: absolute;
+        top: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.7rem;
+        font-weight: 900;
+        color: var(--blue);
+      }
+      .col.active .bar {
+        background: linear-gradient(180deg, #38a5ff, var(--blue2));
+        box-shadow: 0 0 0 3px rgba(56, 165, 255, 0.15);
+      }
+      .causeList {
+        display: grid;
+        gap: 13px;
+      }
+      .causeRow {
+        font-size: 0.78rem;
+      }
+      .causeRow span {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+      }
+      .track {
+        height: 9px;
+        background: #e9eef5;
+        border-radius: 99px;
+        overflow: hidden;
+      }
+      .fill {
+        height: 100%;
+        background: var(--blue2);
+        border-radius: 99px;
+      }
+      .fill.yellow {
+        background: var(--yellow);
+      }
+      .dataFoot {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 14px;
+      }
+      .insight {
+        background: #0d284e;
+        border: 1px solid #24456e;
+        border-radius: 12px;
+        padding: 20px;
+      }
+      .insight b {
+        color: var(--yellow);
+        display: block;
+        margin-bottom: 8px;
+      }
+      .insight p {
+        color: #c4d3e7;
+        font-size: 0.84rem;
+        margin: 0;
+      }
+      .solutionGrid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 24px;
+      }
+      .proposalBox {
+        background: linear-gradient(145deg, #281033, #4f1665);
+        color: white;
+        border-radius: 20px;
+        padding: 32px;
+      }
+      .proposalBox h2 {
+        color: white;
+        font-size: 2.3rem;
+      }
+      .proposalBox p {
+        color: #eadcf0;
+      }
+      .proposalMetrics {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 24px 0;
+      }
+      .proposalMetrics div {
+        background: rgba(255, 255, 255, 0.09);
+        padding: 13px;
+        border-radius: 10px;
+        font-size: 0.82rem;
+      }
+      .proposalMetrics b {
+        display: block;
+        font-size: 1.05rem;
+      }
+      .qrBox {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 28px;
+        text-align: center;
+      }
+      .qrBox img {
+        width: min(260px, 80%);
+        aspect-ratio: 1;
+        border-radius: 12px;
+      }
+      .qrBox h3 {
+        color: var(--blue);
+        margin: 15px 0 8px;
+      }
+      .platforms {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: 24px;
+      }
+      .platform {
+        border: 1px solid var(--line);
+        background: white;
+        border-radius: 14px;
+        padding: 22px;
+      }
+      .platform h3 {
+        color: var(--blue);
+        margin-bottom: 9px;
+      }
+      .platform p {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+      .linkBtn {
+        display: inline-flex;
+        margin-top: 12px;
+        background: var(--yellow);
+        color: var(--blue);
+        padding: 11px 15px;
+        border-radius: 9px;
+        text-decoration: none;
+        font-weight: 900;
+      }
+      .linkBtn.blue {
+        background: var(--blue);
+        color: white;
+      }
+      .roi {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .roi div {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 16px;
+        background: #fff;
+      }
+      .roi strong {
+        display: block;
+        font-family: Montserrat;
+        color: var(--blue);
+        font-size: 1.25rem;
+      }
+      .disclaimer {
+        font-size: 0.78rem;
+        color: var(--muted);
+        margin-top: 16px;
+      }
+      @media (max-width: 900px) {
+        .navlinks {
+          display: none;
+        }
+        .heroGrid,
+        .sectionHead,
+        .kitgrid,
+        .campaign,
+        .metrics,
+        .solutionGrid {
+          grid-template-columns: 1fr;
+        }
+        .kpis {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .vizgrid {
+          grid-template-columns: 1fr;
+        }
+        .dataFoot,
+        .roi {
+          grid-template-columns: 1fr;
+        }
+        .platforms {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          min-height: auto;
+        }
+        .journey,
+        .roadmap {
+          grid-template-columns: 1fr 1fr;
+        }
+        .cards {
+          grid-template-columns: 1fr;
+        }
+        .heroCard {
+          display: none;
+        }
+        .sectionHead {
+          gap: 20px;
+        }
+        .campaign {
+          padding: 28px;
+        }
+        .topic .body p {
+          padding-left: 22px;
+        }
+        .flow {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 560px) {
+        .shell {
+          width: min(100% - 26px, 1180px);
+        }
+        section {
+          padding: 70px 0;
+        }
+        .navin {
+          height: 64px;
+        }
+        .pill {
+          display: none;
+        }
+        .journey,
+        .roadmap,
+        .kpis {
+          grid-template-columns: 1fr;
+        }
+        .heroGrid {
+          padding: 70px 0;
+        }
+        .heroActions {
+          display: grid;
+        }
+        .btn {
+          justify-content: center;
+        }
+        .kitimg {
+          min-height: 300px;
+        }
+        .footer .shell {
+          display: block;
+        }
+        .topic button {
+          grid-template-columns: 30px 1fr auto;
+        }
+        .topic .body p {
+          padding-right: 22px;
+        }
+        .columns {
+          gap: 4px;
+        }
+        .bar {
+          width: 80%;
+        }
+        .proposalMetrics {
+          grid-template-columns: 1fr;
+        }
+      }
+      .maxLogo {
+        width: 112px;
+        height: 112px;
+        object-fit: cover;
+        border-radius: 22px;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.24);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .animatedClaim {
+        height: 1.15em;
+        position: relative;
+        overflow: hidden;
+        margin: 18px 0 24px;
+        font-family: Montserrat;
+        font-size: clamp(2.7rem, 6vw, 6rem);
+        font-weight: 900;
+        letter-spacing: -0.06em;
+        line-height: 1.05;
+      }
+      .animatedClaim span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        transform: translateY(70%);
+        animation: claim 9s infinite;
+      }
+      .animatedClaim span:nth-child(2) {
+        animation-delay: 3s;
+      }
+      .animatedClaim span:nth-child(3) {
+        animation-delay: 6s;
+        color: var(--yellow);
+      }
+      @keyframes claim {
+        0% {
+          opacity: 0;
+          transform: translateY(70%);
+        }
+        8%,
+        27% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        33%,
+        100% {
+          opacity: 0;
+          transform: translateY(-70%);
+        }
+      }
+      .buildingTitle {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+      }
+      .buildingTitle:before {
+        content: "";
+        width: 34px;
+        height: 40px;
+        border: 3px solid var(--yellow);
+        border-bottom-width: 7px;
+        background: repeating-linear-gradient(
+          90deg,
+          transparent 0 7px,
+          rgba(255, 205, 25, 0.32) 7px 10px
+        );
+      }
+      .buildingMeta {
+        display: inline-block;
+        color: var(--blue2);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        margin-bottom: 8px;
+      }
+      .phase:nth-child(1) {
+        border-top-color: #6b7c93;
+      }
+      .phase:nth-child(2) {
+        border-top-color: #4b8bc8;
+      }
+      .phase:nth-child(3) {
+        border-top-color: #0d3a74;
+      }
+      .phase:nth-child(4) {
+        border-top-color: var(--yellow);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .animatedClaim span {
+          animation: none;
+          opacity: 0;
+        }
+        .animatedClaim span:last-child {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      .brand,
+      .hero:after,
+      .heroCard strong,
+      .topic button span:first-child,
+      .kitfallback strong,
+      .kpi strong,
+      .roi strong {
+        font-family: Poppins, sans-serif;
+      }
+      .animatedClaim {
+        height: clamp(4.7rem, 8vw, 8rem);
+        font-family: Poppins, sans-serif;
+        font-weight: 800;
+        letter-spacing: -0.055em;
+        line-height: 1.12;
+      }
+      .animatedClaim span {
+        top: 50%;
+        white-space: nowrap;
+        transform: translateY(35%);
+      }
+      @keyframes claim {
+        0% {
+          opacity: 0;
+          transform: translateY(35%);
+        }
+        8%,
+        27% {
+          opacity: 1;
+          transform: translateY(-50%);
+        }
+        33%,
+        100% {
+          opacity: 0;
+          transform: translateY(-135%);
+        }
+      }
+      @media (max-width: 560px) {
+        .animatedClaim {
+          height: 7.2rem;
+        }
+        .animatedClaim span {
+          white-space: normal;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="shell navin">
+        <a class="brand" href="#inicio">MAX <span>PEOPLE</span></a>
+        <div class="navlinks">
+          <a href="#onboarding">Onboarding</a><a href="#cultura">Cultura</a
+          ><a href="#campanhas">Campanhas</a
+          ><a href="#pessoas">Desenvolvimento</a
+          ><a href="#dashboard">Dashboard</a><a href="#solucoes">Soluções</a>
+        </div>
+        <span class="pill">PLANO DE EXPERIÊNCIA MAX</span>
+      </div>
+    </nav>
+    <header class="hero" id="inicio">
+      <div class="shell heroGrid">
+        <div>
+          <img class="maxLogo" src="assets/logo-max.jpeg" alt="Max Imóveis" />
+          <div class="animatedClaim" aria-label="Você é MAX!">
+            <span>Você é um máximo.</span><span>Você faz parte.</span
+            ><span>Você é MAX!</span>
+          </div>
+          <p class="lead">
+            Uma jornada para acolher, conectar e desenvolver pessoas,
+            fortalecendo a experiência de quem constrói a história da Max
+            Imóveis todos os dias.
+          </p>
+          <div class="heroActions">
+            <a class="btn primary" href="#visao">Conhecer a jornada →</a
+            ><a class="btn secondary" href="#onboarding"
+              >Ver experiência de integração</a
+            >
+          </div>
+        </div>
+        <aside class="heroCard">
+          <strong>Você é MAX!</strong>
+          <p>
+            Um conceito de pertencimento: reconhecer o valor de cada pessoa e
+            reforçar que todos fazem parte da construção da Max.
+          </p>
+          <div class="miniGrid">
+            <div class="mini"><b>Acolher</b>Chegada</div>
+            <div class="mini"><b>Conectar</b>Cultura</div>
+            <div class="mini"><b>Desenvolver</b>Pessoas</div>
+            <div class="mini"><b>Evoluir</b>Resultados</div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <section id="visao">
+      <div class="shell">
+        <div class="sectionHead">
+          <div>
+            <div class="kicker">Visão do projeto</div>
+            <h2>Da admissão ao pertencimento</h2>
+          </div>
+          <p>
+            Onboarding não é apenas apresentar regras no primeiro dia. É reduzir
+            insegurança, acelerar autonomia e criar uma referência clara de
+            cultura, comportamento e desempenho desde o início.
+          </p>
+        </div>
+        <div class="journey">
+          <article class="phase">
+            <span class="num">01</span>
+            <h3>Antes da chegada</h3>
+            <p>
+              Preparar sala, kit, acessos, equipamentos, agenda e responsáveis
+              pela recepção.
+            </p>
+          </article>
+          <article class="phase">
+            <span class="num">02</span>
+            <h3>Primeiro dia</h3>
+            <p>
+              Acolher, contar a história, apresentar cultura, estrutura, normas
+              e pessoas-chave.
+            </p>
+          </article>
+          <article class="phase">
+            <span class="num">03</span>
+            <h3>Primeiros 30 dias</h3>
+            <p>
+              Acompanhar adaptação, dúvidas, treinamentos, rotina e integração
+              com a liderança.
+            </p>
+          </article>
+          <article class="phase">
+            <span class="num">04</span>
+            <h3>30–90 dias</h3>
+            <p>
+              Realizar checkpoints, avaliar experiência e consolidar
+              expectativas e desenvolvimento.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark" id="onboarding">
+      <div class="shell">
+        <div class="sectionHead">
+          <div>
+            <div class="kicker" style="color: var(--yellow)">
+              Conteúdo do onboarding
+            </div>
+            <h2>O que toda pessoa precisa saber</h2>
+          </div>
+          <p>
+            A apresentação final poderá receber textos, fotos, nomes, documentos
+            e links após a validação interna. Aqui estão os tópicos e a
+            finalidade de cada bloco.
+          </p>
+        </div>
+        <div class="accordion" id="accordion">
+          <article class="topic open">
+            <button>
+              <span>01</span><span>Boas-vindas e como o onboarding começa</span
+              ><i>+</i>
+            </button>
+            <div class="body">
+              <p>
+                Cria segurança psicológica, apresenta a agenda do dia e mostra
+                quem acompanhará a pessoa. Começa antes da admissão, com
+                comunicação, estrutura e acessos preparados.
+              </p>
+            </div>
+          </article>
+          <article class="topic">
+            <button>
+              <span>02</span
+              ><span>História da empresa, quem somos e 29 anos</span><i>+</i>
+            </button>
+            <div class="body">
+              <p>
+                Conecta a pessoa ao legado, aos fundadores, aos marcos da
+                trajetória e à razão de existir da Max. Fotos e depoimentos
+                tornam a história mais humana.
+              </p>
+            </div>
+          </article>
+          <article class="topic">
+            <button>
+              <span>03</span><span>Missão, visão e valores</span><i>+</i>
+            </button>
+            <div class="body">
+              <p>
+                Traduz a estratégia em comportamentos esperados. Sugestão:
+                revisar formalmente uma vez ao ano e sempre que houver mudança
+                relevante de estratégia, posicionamento ou estrutura — não
+                significa necessariamente alterar todos os anos.
+              </p>
+            </div>
+          </article>
+          <article class="topic">
+            <button>
+              <span>04</span
+              ><span>Prêmios, ISO 9001 e jornada rumo ao GPTW</span><i>+</i>
+            </button>
+            <div class="body">
+              <p>
+                Reforça credibilidade e padrão de qualidade. Apresentar somente
+                certificações e reconhecimentos validados; o GPTW deve aparecer
+                como objetivo futuro, com ações e critérios claros.
+              </p>
+            </div>
+          </article>
+          <article class="topic">
+            <button>
+              <span>05</span><span>Unidades e serviços oferecidos</span><i>+</i>
+            </button>
+            <div class="body">
+              <p>
+                Apresenta a Matriz Itajaí e as filiais de Navegantes e Balneário
+                Camboriú, explicando como as unidades, áreas e serviços se
+                conectam para atender clientes.
+              </p>
+            </div>
+          </article>
+          <article class="topic">
+            <button>
+              <span>06</span
+              ><span>Organograma, hierarquia e “a quem me reporto”</span
+              ><i>+</i>
+            </button>
+            <div class="body">
+              <p>
+                Reduz ruídos, deixa clara a liderança direta, os canais de
+                decisão e as interfaces de cada função. Deve ser visual e
+                atualizado a cada movimentação estrutural.
+              </p>
+            </div>
+          </article>
+          <article class="topic">
+            <button>
+              <span>07</span
+              ><span>Boas condutas, limpeza, normas e diretrizes</span><i>+</i>
+            </button>
+            <div class="body">
+              <p>
+                Alinha convivência, postura profissional, cuidado com espaços
+                compartilhados, atendimento, comunicação e responsabilidades
+                individuais.
+              </p>
+            </div>
+          </article>
+          <article class="topic">
+            <button>
+              <span>08</span
+              ><span>Contrato CLT, pagamentos, benefícios e comprovante</span
+              ><i>+</i>
+            </button>
+            <div class="body">
+              <p>
+                Explica datas, composição da remuneração, acesso ao
+                holerite/comprovante, descontos, canais de suporte e regras dos
+                benefícios, reduzindo dúvidas recorrentes.
+              </p>
+            </div>
+          </article>
+          <article class="topic">
+            <button>
+              <span>09</span
+              ><span>Ferramentas, acessos, celular e notebook</span><i>+</i>
+            </button>
+            <div class="body">
+              <p>
+                Orienta entrega, responsabilidade, conservação, senhas, uso
+                profissional, devolução, suporte e segurança. As normas de uso
+                devem ser formalizadas em termo próprio.
+              </p>
+            </div>
+          </article>
+          <article class="topic">
+            <button>
+              <span>10</span><span>Cartão Caju e uso de uniformes</span><i>+</i>
+            </button>
+            <div class="body">
+              <p>
+                Explica ativação, utilização, saldo e suporte do cartão; também
+                padroniza entrega, conservação, apresentação e reposição dos
+                uniformes.
+              </p>
+            </div>
+          </article>
+          <article class="topic">
+            <button>
+              <span>11</span><span>Relógio-ponto e gestão de frequência</span
+              ><i>+</i>
+            </button>
+            <div class="body">
+              <p>
+                Mostra, com exemplos, as marcações de entrada, saída, intervalos
+                e correções. O registro correto protege colaborador e empresa e
+                garante fechamento confiável.
+              </p>
+            </div>
+          </article>
+          <article class="topic">
+            <button>
+              <span>12</span><span>LGPD, confidencialidade e sigilo</span
+              ><i>+</i>
+            </button>
+            <div class="body">
+              <p>
+                Orienta tratamento responsável de dados de clientes e
+                colaboradores, compartilhamento, armazenamento, acesso, descarte
+                e comunicação de incidentes. Deve ser acompanhado de políticas e
+                termos formais.
+              </p>
+            </div>
+          </article>
+          <article class="topic">
+            <button>
+              <span>13</span
+              ><span>Dúvidas, avaliação da integração e QR Code</span><i>+</i>
+            </button>
+            <div class="body">
+              <p>
+                Reserva um espaço seguro para perguntas e encerra com pesquisa
+                rápida por QR Code. O retorno permite medir clareza,
+                acolhimento, estrutura e pontos de melhoria.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell kitgrid">
+        <div class="kitimg">
+          <img
+            src="assets/kit-onboarding.png"
+            alt="Mockup do kit de onboarding com ecobag, agenda, caneta e garrafa"
+            onerror="this.remove();this.parentElement.querySelector('.kitfallback').hidden=false"
+          />
+          <div class="kitfallback" hidden>
+            <strong>VOCÊ É MAX!</strong>
+            <p>Ecobag • agenda • caneta • garrafinha</p>
+          </div>
+        </div>
+        <div>
+          <div class="kicker">Experiência de chegada</div>
+          <h2 style="font-size: clamp(2.2rem, 4vw, 4rem); color: var(--blue)">
+            A sala já diz: esperávamos por você.
+          </h2>
+          <p style="color: var(--muted)">
+            A integração começa no ambiente. Uma sala preparada e um kit útil
+            materializam cuidado, organização e pertencimento.
+          </p>
+          <div class="checklist">
+            <div class="check">
+              <span>✓</span>
+              <div>
+                <b>Sala pronta</b><br />Apresentação testada, água, lugares
+                definidos e agenda disponível.
+              </div>
+            </div>
+            <div class="check">
+              <span>✓</span>
+              <div>
+                <b>Kit onboarding</b><br />Ecobag, agenda, caneta e garrafinha
+                organizados para a recepção.
+              </div>
+            </div>
+            <div class="check">
+              <span>✓</span>
+              <div>
+                <b>Acessos antecipados</b><br />Notebook, celular, e-mail e
+                sistemas preparados conforme a função.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cultura" style="padding-top: 20px">
+      <div class="shell">
+        <div class="campaign">
+          <div>
+            <div class="kicker">Cultura e pertencimento</div>
+            <h2>Encontro Você é MAX!</h2>
+            <p>
+              Um momento de conexão para quem já faz parte da história. O
+              encontro aproxima pessoas, compartilha a trajetória da empresa,
+              apresenta melhorias e reforça duas ideias:
+              <strong>você é um máximo</strong> e
+              <strong>você pertence à Max</strong>.
+            </p>
+            <div class="quote">
+              “Nossa história foi construída por pessoas. Continuamos
+              construindo juntos.”
+            </div>
+          </div>
+          <div class="event">
+            <div>01 • Vídeo institucional com Marketing</div>
+            <div>02 • Fala dos sócios sobre a trajetória</div>
+            <div>03 • 29 anos: história, pessoas e futuro</div>
+            <div>04 • Cultura, benefícios e experiências</div>
+            <div>05 • Espaço de escuta e compromisso coletivo</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="campanhas">
+      <div class="shell">
+        <div class="sectionHead">
+          <div>
+            <div class="kicker">Endomarketing e pertencimento</div>
+            <h2>Um calendário que mantém a cultura viva</h2>
+          </div>
+          <p>
+            As ações internas deixam de ser iniciativas soltas e passam a ter
+            objetivo, público, responsável, orçamento e indicador. O calendário
+            deve equilibrar saúde, reconhecimento, informação e conexão entre as
+            três unidades.
+          </p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <span class="tag">Saúde e prevenção</span>
+            <h3>Campanhas anuais</h3>
+            <p>
+              Setembro Amarelo, Outubro Rosa, Novembro Azul, segurança,
+              bem-estar e outras pautas relevantes — sempre com conteúdo
+              responsável, canal de apoio e cuidado para não expor
+              colaboradores.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">Reconhecimento</span>
+            <h3>Aniversários e tempo de casa</h3>
+            <p>
+              Régua mensal de aniversariantes e marcos de 1, 3, 5 anos ou faixas
+              definidas, com comunicação padronizada e reconhecimento coerente
+              com a cultura.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">Planejamento</span>
+            <h3>Calendário editorial interno</h3>
+            <p>
+              Planejamento trimestral e anual com campanhas, eventos,
+              comunicados, ações de integração, orçamento, responsáveis, prazos
+              e avaliação de resultado.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">Integração</span>
+            <h3>Datas e eventos internos</h3>
+            <p>
+              Ações de boas-vindas, celebrações institucionais, 29 anos da Max,
+              encontros das unidades e momentos que aproximem equipes e
+              liderança.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">Comunicação</span>
+            <h3>Canais e identidade</h3>
+            <p>
+              Definir tom de voz, frequência e canais para que mensagens
+              importantes não concorram entre si e cheguem a todos com clareza.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">Mensuração</span>
+            <h3>Indicadores das ações</h3>
+            <p>
+              Participação, alcance, percepção, comentários, adesão, custo por
+              ação e aprendizados para o próximo ciclo.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top: 0">
+      <div class="shell">
+        <div class="campaign" style="background: var(--blue); color: white">
+          <div>
+            <div class="kicker" style="color: var(--yellow)">
+              Campanha em andamento
+            </div>
+            <h2 style="font-size: clamp(2.4rem, 5vw, 4.8rem)">
+              MAX Setembro Amarelo
+            </h2>
+            <p style="color: #dce7f8">
+              Portal interativo para iluminar uma casa, plantar um girassol e
+              deixar uma mensagem no mural. Uma ação de conscientização,
+              acolhimento e participação.
+            </p>
+            <a
+              class="linkBtn"
+              href="https://max-setembro-amarelo.vercel.app/"
+              target="_blank"
+              rel="noopener"
+              >Acessar campanha Setembro Amarelo</a
+            >
+          </div>
+          <div class="event">
+            <div>Ilumine uma casa</div>
+            <div>Plante seu girassol</div>
+            <div>Deixe uma mensagem no mural</div>
+            <div>Você é MAX!</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="processos">
+      <div class="shell">
+        <div class="sectionHead">
+          <div>
+            <div class="kicker">Eficiência e experiência</div>
+            <h2>Processos que liberam tempo para cuidar de pessoas</h2>
+          </div>
+          <p>
+            Automação e controle não são projetos isolados: reduzem retrabalho,
+            aumentam confiabilidade e dão ao RH dados para decidir.
+          </p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <span class="tag">Prioridade</span>
+            <h3>Relógio-ponto e gestão de frequência</h3>
+            <p>
+              Automatizar as batidas, conferência, notificações, assinatura,
+              ajustes, acompanhamento de pendências e visão dos gestores.
+            </p>
+            <button data-modal="ponto">Ver entregáveis →</button>
+          </article>
+          <article class="card">
+            <span class="tag">Controle</span>
+            <h3>Comissões</h3>
+            <p>
+              Padronizar entrada mensal, aprovações, cálculo, histórico e
+              dashboard para reduzir divergências.
+            </p>
+            <button data-modal="comissao">Ver entregáveis →</button>
+          </article>
+          <article class="card">
+            <span class="tag">Base RH</span>
+            <h3>Rotinas específicas</h3>
+            <p>
+              Centralizar benefícios, uniformes, solicitações, acessos,
+              documentos e indicadores em fluxos rastreáveis.
+            </p>
+            <button data-modal="rotinas">Ver entregáveis →</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pessoas" style="background: #eef2f7">
+      <div class="shell">
+        <div class="sectionHead">
+          <div>
+            <div class="kicker">Desenvolvimento, saúde e desempenho</div>
+            <h2>Uma trilha para crescer com clareza</h2>
+          </div>
+          <p>
+            O desenvolvimento conecta estratégia, competências, liderança, saúde
+            ocupacional e acompanhamento — com ações recorrentes e mensuráveis,
+            não apenas treinamentos pontuais.
+          </p>
+        </div>
+        <div class="roadmap">
+          <article class="step">
+            <small>ETAPA 01</small>
+            <h3>Diagnóstico</h3>
+            <p>
+              Competências, clima, riscos psicossociais, necessidades por área e
+              prioridades do negócio.
+            </p>
+          </article>
+          <article class="step">
+            <small>ETAPA 02</small>
+            <h3>Avaliação</h3>
+            <p>
+              Ciclo de desempenho com critérios, feedback, evidências e
+              calibragem de liderança.
+            </p>
+          </article>
+          <article class="step">
+            <small>ETAPA 03</small>
+            <h3>PDI</h3>
+            <p>
+              Objetivos individuais, ações, prazos, responsáveis, evidências e
+              checkpoints.
+            </p>
+          </article>
+          <article class="step">
+            <small>ETAPA 04</small>
+            <h3>Trilha educacional</h3>
+            <p>
+              Formação por função e nível, com conteúdo técnico, comportamental
+              e de qualidade de vida.
+            </p>
+          </article>
+        </div>
+        <div class="cards" style="margin-top: 42px">
+          <article class="card">
+            <span class="tag">Liderança</span>
+            <h3>Formação de gestores</h3>
+            <p>
+              Papel da liderança, comunicação, feedback, gestão de conflitos,
+              indicadores, reconhecimento, segurança psicológica e condução de
+              equipes.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">Comportamental</span>
+            <h3>Inteligência emocional</h3>
+            <p>
+              Autoconsciência, autorregulação, empatia, relacionamentos, tomada
+              de decisão e aplicação no trabalho.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">NR-1</span>
+            <h3>Riscos psicossociais e prevenção</h3>
+            <p>
+              Integrar fatores psicossociais ao gerenciamento de riscos
+              ocupacionais: diagnóstico, plano de ação, responsabilidades,
+              registros, comunicação e acompanhamento com apoio técnico de SST.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">Aprendizagem</span>
+            <h3>Trilha contínua</h3>
+            <p>
+              Onboarding, cultura, atendimento, vendas, sistemas, LGPD, ética,
+              segurança, técnica por cargo e reciclagens periódicas.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">Financeiro</span>
+            <h3>Educação financeira</h3>
+            <p>
+              Profissional da área para abordar orçamento, dívidas, crédito
+              responsável, e-consignado, reserva de emergência e planejamento —
+              sem exposição ou julgamento individual.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">Efetividade</span>
+            <h3>Avaliação dos treinamentos</h3>
+            <p>
+              Medir reação, aprendizagem, aplicação prática e resultado,
+              registrando presença, evidências e próximos passos.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="bi" id="dashboard">
+      <div class="shell">
+        <div class="sectionHead">
+          <div>
+            <div class="kicker" style="color: var(--yellow)">
+              People Analytics • dados reais
+            </div>
+            <h2>Painel de turnover e custos</h2>
+          </div>
+          <p>
+            Consolidação agregada dos relatórios de janeiro e março a agosto de
+            2026. Fevereiro não foi enviado; por isso, não foi tratado como
+            zero.
+          </p>
+        </div>
+        <div class="biToolbar">
+          <label
+            >Filtrar período
+            <select id="monthFilter">
+              <option value="all">Todos os meses enviados</option>
+              <option value="jan">Janeiro</option>
+              <option value="mar">Março</option>
+              <option value="abr">Abril</option>
+              <option value="mai">Maio</option>
+              <option value="jun">Junho</option>
+              <option value="jul">Julho</option>
+              <option value="ago">Agosto</option>
+            </select></label
+          ><span class="coverage"
+            >7 relatórios • 24 desligamentos • atualização 03/09/2026</span
+          >
+        </div>
+        <div class="kpis">
+          <article class="kpi">
+            <small>Desligamentos</small><strong id="kExits">24</strong
+            ><em>nos relatórios recebidos</em>
+          </article>
+          <article class="kpi">
+            <small>Desembolso observado</small
+            ><strong id="kCash">R$ 148,1 mil</strong
+            ><em>líquido + FGTS/GRRF</em>
+          </article>
+          <article class="kpi">
+            <small>Até 90 dias</small><strong id="kEarly">7</strong
+            ><em>29,2% das saídas</em>
+          </article>
+          <article class="kpi">
+            <small>Saídas iniciadas pelo empregado</small
+            ><strong id="kEmployee">15</strong><em>62,5% do total</em>
+          </article>
+          <article class="kpi">
+            <small>Turnover acumulado estimado</small
+            ><strong id="kTurnover">29,3%</strong
+            ><em id="kTurnoverBase">24 saídas ÷ base de 82 pessoas</em>
+          </article>
+        </div>
+        <p class="disclaimer" style="color: #aabed7">
+          Base usada: 82 colaboradores informados na proposta Sólides. Este é o
+          índice acumulado estimado dos relatórios recebidos. Para o turnover
+          oficial mensal, é necessário usar o headcount médio de cada
+          competência: (admissões + desligamentos) ÷ 2 ÷ quadro médio × 100.
+        </p>
+        <div class="vizgrid">
+          <article class="viz">
+            <h3>Desembolso rescisório observado por mês</h3>
+            <div class="columns" id="monthChart">
+              <div class="col" data-month="jan">
+                <div class="bar" data-exits="1 saída" style="height: 2%"></div>
+                <b>Jan</b>
+              </div>
+              <div class="col" data-month="mar">
+                <div
+                  class="bar"
+                  data-exits="3 saídas"
+                  style="height: 75%"
+                ></div>
+                <b>Mar</b>
+              </div>
+              <div class="col" data-month="abr">
+                <div
+                  class="bar"
+                  data-exits="3 saídas"
+                  style="height: 12%"
+                ></div>
+                <b>Abr</b>
+              </div>
+              <div class="col" data-month="mai">
+                <div
+                  class="bar"
+                  data-exits="4 saídas"
+                  style="height: 26%"
+                ></div>
+                <b>Mai</b>
+              </div>
+              <div class="col" data-month="jun">
+                <div class="bar" data-exits="1 saída" style="height: 18%"></div>
+                <b>Jun</b>
+              </div>
+              <div class="col" data-month="jul">
+                <div
+                  class="bar"
+                  data-exits="7 saídas"
+                  style="height: 97%"
+                ></div>
+                <b>Jul</b>
+              </div>
+              <div class="col" data-month="ago">
+                <div
+                  class="bar"
+                  data-exits="5 saídas"
+                  style="height: 100%"
+                ></div>
+                <b>Ago</b>
+              </div>
+            </div>
+          </article>
+          <article class="viz">
+            <h3>Motivos agrupados</h3>
+            <div class="causeList">
+              <div class="causeRow">
+                <span><b>Pedido do empregado</b><b>10</b></span>
+                <div class="track">
+                  <div class="fill yellow" style="width: 41.7%"></div>
+                </div>
+              </div>
+              <div class="causeRow">
+                <span><b>Fim antecipado pelo empregado</b><b>5</b></span>
+                <div class="track">
+                  <div class="fill" style="width: 20.8%"></div>
+                </div>
+              </div>
+              <div class="causeRow">
+                <span><b>Sem justa causa - empresa</b><b>3</b></span>
+                <div class="track">
+                  <div class="fill" style="width: 12.5%"></div>
+                </div>
+              </div>
+              <div class="causeRow">
+                <span><b>Acordo consensual</b><b>3</b></span>
+                <div class="track">
+                  <div class="fill" style="width: 12.5%"></div>
+                </div>
+              </div>
+              <div class="causeRow">
+                <span><b>Outros términos</b><b>3</b></span>
+                <div class="track">
+                  <div class="fill" style="width: 12.5%"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="dataFoot">
+          <article class="insight">
+            <b>Concentração recente</b>
+            <p>
+              Julho e agosto representam 12 das 24 saídas e 60% do desembolso
+              observado. Exigem investigação de causas, áreas e lideranças.
+            </p>
+          </article>
+          <article class="insight">
+            <b>Desligamento precoce</b>
+            <p>
+              7 pessoas saíram antes de 90 dias. A jornada de recrutamento,
+              onboarding e checkpoints é a frente mais diretamente relacionada.
+            </p>
+          </article>
+          <article class="insight">
+            <b>E-consignado • 08/2026</b>
+            <p>
+              18 colaboradores, R$ 15.241,75 em parcelas no mês e média de R$
+              846,76. Utilizar apenas de forma agregada e educativa.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="dados">
+      <div class="shell">
+        <div class="sectionHead">
+          <div>
+            <div class="kicker">Economia potencial</div>
+            <h2>Quanto a retenção pode preservar</h2>
+          </div>
+          <p>
+            Os cenários abaixo usam somente R$ 47.715,48 de desembolso associado
+            a pedidos e términos antecipados iniciados pelo empregado. Não
+            incluem produtividade perdida, recrutamento, vacância ou tempo da
+            liderança.
+          </p>
+        </div>
+        <div class="roi">
+          <div>
+            <small>Cenário conservador • 10%</small><strong>R$ 4.771,55</strong
+            ><span>economia nos meses analisados</span>
+          </div>
+          <div>
+            <small>Cenário provável • 20%</small><strong>R$ 9.543,10</strong
+            ><span>economia nos meses analisados</span>
+          </div>
+          <div>
+            <small>Cenário desejado • 30%</small><strong>R$ 14.314,64</strong
+            ><span>economia nos meses analisados</span>
+          </div>
+        </div>
+        <div class="metrics" style="margin-top: 28px">
+          <article class="panel">
+            <h3>Impacto direto do onboarding</h3>
+            <p>
+              Os 7 desligamentos até 90 dias somaram R$ 11.524,37 de desembolso
+              observado. Reduzir esse grupo em 15%, 25% ou 35% representaria
+              aproximadamente R$ 1.728,66, R$ 2.881,09 ou R$ 4.033,53, além dos
+              custos indiretos ainda não medidos.
+            </p>
+            <div class="note">
+              Onboarding não atua sozinho. A retenção depende também de seleção,
+              clareza da vaga, liderança, remuneração, ambiente, desenvolvimento
+              e qualidade dos dados.
+            </div>
+          </article>
+          <article class="panel">
+            <h3>Como medir corretamente</h3>
+            <div class="dataList">
+              <span>Headcount no início e fim de cada mês</span
+              ><span>Admissões, desligamentos e motivo validado</span
+              ><span>Área, unidade, cargo, liderança e tempo de casa</span
+              ><span>Custo de recrutamento, exame, kit e horas envolvidas</span
+              ><span>Checkpoints de 7, 30, 60 e 90 dias</span
+              ><span>Entrevista de desligamento e causa controlável</span>
+            </div>
+          </article>
+        </div>
+        <p class="disclaimer">
+          <b>Regime tributário:</b> por se tratar de Lucro Presumido, o ROI é
+          apresentado prioritariamente por caixa e eficiência operacional.
+          Eventuais efeitos fiscais devem ser validados pela contabilidade;
+          despesas não foram tratadas aqui como redução automática da base
+          presumida de IRPJ/CSLL.
+        </p>
+      </div>
+    </section>
+
+    <section id="solucoes">
+      <div class="shell">
+        <div class="sectionHead">
+          <div>
+            <div class="kicker">Recrutamento, sistemas e plataformas</div>
+            <h2>Duas alternativas para evoluir a gestão</h2>
+          </div>
+          <p>
+            A decisão pode combinar uma plataforma consolidada de mercado com a
+            evolução do portal próprio da Max. O critério deve considerar
+            aderência, implantação, integrações, custo total, segurança, suporte
+            e resultado.
+          </p>
+        </div>
+        <div class="solutionGrid">
+          <article class="proposalBox">
+            <div class="kicker" style="color: #e9a9ff">
+              Opção 1 • Sólides Gestão Pro
+            </div>
+            <h2>Inteligência comportamental integrada</h2>
+            <p>
+              A proposta contempla o Profiler Gestão Professional para 82
+              colaboradores, recrutamento e seleção e acompanhamento da jornada.
+            </p>
+            <div class="proposalMetrics">
+              <div>
+                <b>R$ 19.975,07</b>investimento estimado no 1º ano, com
+                implantação
+              </div>
+              <div><b>R$ 23,20</b>valor informado por colaborador</div>
+              <div><b>164 testes</b>de perfil comportamental por ano</div>
+              <div><b>32 vagas</b>anuais para recrutamento e seleção</div>
+            </div>
+            <a
+              class="linkBtn"
+              href="assets/proposta-solides-max.pdf"
+              target="_blank"
+              rel="noopener"
+              >Abrir proposta completa</a
+            >
+            <p style="font-size: 0.74rem; margin-top: 16px">
+              Proposta válida até 24/09/2026. Valores e escopo devem ser
+              confirmados com o fornecedor antes da contratação.
+            </p>
+          </article>
+          <article class="qrBox">
+            <div class="kicker">Duas cortesias disponíveis</div>
+            <img
+              src="https://quickchart.io/qr?text=https%3A%2F%2Fnew.solides.com%2Fpassports%2Fc365d913a99d5fefcd64232de63b876d4db0ff0df245bc550fb2fdf4cdcadd22&size=320&margin=2&dark=071e45&light=ffffff"
+              alt="QR Code para análise comportamental Sólides"
+            />
+            <h3>Experimente o Profiler</h3>
+            <p>
+              Escaneie o QR Code ou abra o link para realizar a análise
+              comportamental. Há duas cortesias compartilhadas.
+            </p>
+            <a
+              class="linkBtn blue"
+              href="https://new.solides.com/passports/c365d913a99d5fefcd64232de63b876d4db0ff0df245bc550fb2fdf4cdcadd22"
+              target="_blank"
+              rel="noopener"
+              >Fazer análise comportamental</a
+            >
+          </article>
+        </div>
+        <div class="platforms">
+          <article class="platform">
+            <span class="tag">Opção 2 • solução própria</span>
+            <h3>MAX PEOPLE + Maxiane</h3>
+            <p>
+              Portal interno com identidade da Max, IA Maxiane, solicitações de
+              RH, colaboradores, comissões, benefícios, cargos e salários,
+              pesquisas, desempenho, People Analytics e auditoria.
+            </p>
+            <a
+              class="linkBtn blue"
+              href="https://max-people.vercel.app/"
+              target="_blank"
+              rel="noopener"
+              >Conhecer o MAX PEOPLE</a
+            >
+          </article>
+          <article class="platform">
+            <span class="tag">Critério de decisão</span>
+            <h3>Comparação orientada por valor</h3>
+            <p>
+              Sólides oferece solução pronta, metodologia comportamental e
+              suporte. MAX PEOPLE permite maior personalização e centralização
+              interna. Recomenda-se piloto, matriz de requisitos e comparação de
+              custo total em 12 meses.
+            </p>
+          </article>
+        </div>
+        <div class="panel" style="margin-top: 24px">
+          <h3>Leitura financeira da proposta</h3>
+          <p>
+            Usando a média mensal da base evitável nos sete relatórios
+            recebidos, o run rate anual seria de aproximadamente R$ 81,8 mil.
+            Uma redução de 30% equivaleria a R$ 24,5 mil; a referência comercial
+            da Sólides cita redução média de 43%, que equivaleria a R$ 35,2 mil.
+            Esta referência é uma alegação do fornecedor, não garantia de
+            resultado para a Max.
+          </p>
+          <div class="roi">
+            <div>
+              <small>Investimento no 1º ano</small><strong>R$ 19.975</strong
+              ><span>mensalidades + implantação</span>
+            </div>
+            <div>
+              <small>Ponto de equilíbrio estimado</small><strong>24,4%</strong
+              ><span>da base anualizada evitável</span>
+            </div>
+            <div>
+              <small>Ganho líquido a 30%</small><strong>R$ 4.564</strong
+              ><span>antes de custos indiretos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="sectionHead">
+          <div>
+            <div class="kicker">Construindo a Experiência MAX</div>
+            <h2 class="buildingTitle">Cada andar fortalece a nossa casa</h2>
+          </div>
+          <p>
+            Como um bom empreendimento, a experiência das pessoas começa pela
+            fundação, ganha estrutura e evolui continuamente. Sem ruptura: uma
+            construção feita com quem já faz parte da Max.
+          </p>
+        </div>
+        <div class="journey">
+          <article class="phase">
+            <span class="buildingMeta">FUNDAÇÃO</span>
+            <h3>Conhecer e direcionar</h3>
+            <p>
+              Validar cultura, conteúdos, organograma, riscos, dados disponíveis
+              e prioridades.
+            </p>
+          </article>
+          <article class="phase">
+            <span class="buildingMeta">1º ANDAR</span>
+            <h3>Acolher e organizar</h3>
+            <p>
+              Onboarding, kit, Encontro Você é MAX!, campanhas, termos, ponto e
+              comissão.
+            </p>
+          </article>
+          <article class="phase">
+            <span class="buildingMeta">2º ANDAR</span>
+            <h3>Conectar e desenvolver</h3>
+            <p>
+              Avaliação, liderança, PDI, NR-1, inteligência emocional e trilhas
+              educacionais.
+            </p>
+          </article>
+          <article class="phase">
+            <span class="buildingMeta">COBERTURA</span>
+            <h3>Medir e evoluir</h3>
+            <p>
+              Turnover, custos, experiência, treinamento, engajamento e melhoria
+              contínua.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="finish">
+      <div class="shell">
+        <div class="eyebrow" style="justify-content: center">
+          Uma nova experiência de pessoas
+        </div>
+        <h2>Você é <span>Max!</span></h2>
+        <p>
+          Porque pertencer é entender a história, reconhecer seu papel e
+          enxergar espaço para crescer.
+        </p>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="shell">
+        <span>MAX PEOPLE • Plano de Estruturação de RH</span
+        ><span
+          >Apresentação estratégica • conteúdo sujeito à validação interna</span
+        >
+      </div>
+    </footer>
+
+    <dialog id="detail">
+      <div class="modal">
+        <button class="close" aria-label="Fechar">×</button>
+        <div id="modalContent"></div>
+      </div>
+    </dialog>
+    <script>
+      document
+        .querySelectorAll(".topic button")
+        .forEach((btn) =>
+          btn.addEventListener("click", () =>
+            btn.parentElement.classList.toggle("open"),
+          ),
+        );
+      const info = {
+        ponto: [
+          "Relógio-ponto e gestão de frequência",
+          "Mapear regras, jornadas e batidas; automatizar alertas; definir fluxo de ajustes e aprovações; gerar espelho para assinatura; acompanhar pendências por gestor; criar indicadores de inconsistência, atraso, absenteísmo, banco de horas e horas extras.",
+        ],
+        comissao: [
+          "Controle de comissões",
+          "Criar modelo único de envio; estabelecer prazo mensal e responsáveis; validação do gestor; regras versionadas; histórico por colaborador; dashboard de valores, divergências e status de fechamento.",
+        ],
+        rotinas: [
+          "Centralização das rotinas",
+          "Organizar solicitações de RH, controle de uniformes, benefícios, equipamentos, acessos e documentos; definir responsáveis, prazo, aprovação, evidência e trilha de auditoria para cada fluxo.",
+        ],
+      };
+      const dialog = document.querySelector("#detail"),
+        content = document.querySelector("#modalContent");
+      document.querySelectorAll("[data-modal]").forEach((btn) =>
+        btn.addEventListener("click", () => {
+          const d = info[btn.dataset.modal];
+          content.innerHTML = "<h3>" + d[0] + "</h3><p>" + d[1] + "</p>";
+          dialog.showModal();
+        }),
+      );
+      document
+        .querySelector(".close")
+        .addEventListener("click", () => dialog.close());
+      dialog.addEventListener("click", (e) => {
+        if (e.target === dialog) dialog.close();
+      });
+      const turnoverData = {
+        all: { exits: 24, cash: 148104.51, early: 7, employee: 15 },
+        jan: { exits: 1, cash: 138.17, early: 0, employee: 1 },
+        mar: { exits: 3, cash: 33947.71, early: 0, employee: 2 },
+        abr: { exits: 3, cash: 5573.21, early: 2, employee: 2 },
+        mai: { exits: 4, cash: 11588.33, early: 1, employee: 3 },
+        jun: { exits: 1, cash: 7926.88, early: 0, employee: 1 },
+        jul: { exits: 7, cash: 43816.29, early: 3, employee: 5 },
+        ago: { exits: 5, cash: 45113.92, early: 1, employee: 1 },
+      };
+      const money = (v) =>
+        v.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+          maximumFractionDigits: v >= 10000 ? 0 : 2,
+        });
+      const monthFilter = document.querySelector("#monthFilter");
+      if (monthFilter)
+        monthFilter.addEventListener("change", (e) => {
+          const key = e.target.value,
+            d = turnoverData[key];
+          document.querySelector("#kExits").textContent = d.exits;
+          document.querySelector("#kCash").textContent = money(d.cash);
+          document.querySelector("#kEarly").textContent = d.early;
+          document.querySelector("#kEmployee").textContent = d.employee;
+          document.querySelector("#kTurnover").textContent =
+            ((d.exits / 82) * 100).toLocaleString("pt-BR", {
+              minimumFractionDigits: 1,
+              maximumFractionDigits: 1,
+            }) + "%";
+          document.querySelector("#kTurnoverBase").textContent =
+            d.exits +
+            (d.exits === 1 ? " saída" : " saídas") +
+            " ÷ base de 82 pessoas";
+          document
+            .querySelectorAll("#monthChart .col")
+            .forEach((c) =>
+              c.classList.toggle(
+                "active",
+                key !== "all" && c.dataset.month === key,
+              ),
+            );
+        });
+    </script>
+  </body>
+</html>
