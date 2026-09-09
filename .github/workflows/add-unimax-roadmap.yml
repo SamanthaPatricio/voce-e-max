@@ -10,15 +10,28 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: max-simulator-publish
+  cancel-in-progress: false
+
 jobs:
   publicar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: python scripts/fix_simulator_clicks.py
-      - run: |
+        with:
+          fetch-depth: 0
+      - name: Sincronizar versão atual
+        run: git pull --rebase origin main
+      - name: Corrigir cliques
+        run: python scripts/fix_simulator_clicks.py
+      - name: Publicar correção
+        run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add index.html
-          git diff --cached --quiet || git commit -m "Corrige interação dos cards do simulador MAX 2027"
-          git push
+          if ! git diff --cached --quiet; then
+            git commit -m "Corrige interação dos cards do simulador MAX 2027"
+            git pull --rebase origin main
+            git push origin main
+          fi
