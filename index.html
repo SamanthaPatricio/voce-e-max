@@ -2353,8 +2353,6 @@
               ),
             );
         });
-const roadmapButtons=[...document.querySelectorAll('.initiative')];
-roadmapButtons.forEach(b=>b.addEventListener('click',()=>b.classList.toggle('active')));
 const strategyData={
 'Max em Movimento':{w:[18,8,24,2,2,30],goal:'Bem-estar, vínculo e prevenção',result:'Fortalece convivência, movimento, saúde e bem-estar das mulheres da Max.',q:['Manter calendário e adesão','Conectar às ações preventivas','Acompanhar participação','Avaliar aprendizados e continuidade']},
 'NR-1 & Saúde Mental':{w:[15,8,16,5,10,40],goal:'Prevenção e gestão de riscos psicossociais',result:'Estrutura prevenção, escuta, evidências e acompanhamento de fatores psicossociais.',q:['Mapear riscos e evidências','Definir plano preventivo','Executar e acompanhar ações','Revisar evidências e plano']},
@@ -2369,6 +2367,8 @@ const strategyData={
 'Automação':{w:[3,3,8,45,25,3],goal:'Eficiência operacional',result:'Reduz tarefas manuais, organiza fluxos e libera capacidade do RH para atuação estratégica.',q:['Mapear gargalos e fluxos','Automatizar rotinas prioritárias','Integrar dados e alertas','Medir ganho operacional']},
 'MAX PEOPLE':{w:[8,10,20,38,38,4],goal:'Experiência digital e centralização',result:'Centraliza serviços, dados e IA em uma experiência digital própria de RH.',q:['Priorizar módulos e arquitetura','Implantar fluxos essenciais','Conectar analytics e Maxiane','Consolidar adoção e evolução']}}
 const dims=['Cultura','Desenvolvimento','Experiência','Eficiência','Dados','Prevenção'];
+const roadmapButtons=[...document.querySelectorAll('.initiative')];
+roadmapButtons.forEach(b=>b.addEventListener('click',()=>b.classList.toggle('active')));
 const goalBtns=[...document.querySelectorAll('.goalBtn')];
 goalBtns.forEach(b=>b.addEventListener('click',()=>{goalBtns.forEach(x=>x.classList.remove('active'));b.classList.add('active')}));
 const goalConfig={
