@@ -2372,15 +2372,67 @@ const dims=['Cultura','Desenvolvimento','Experiência','Eficiência','Dados','Pr
 const goalBtns=[...document.querySelectorAll('.goalBtn')];
 goalBtns.forEach(b=>b.addEventListener('click',()=>{goalBtns.forEach(x=>x.classList.remove('active'));b.classList.add('active')}));
 const goalConfig={
-Desenvolvimento:{label:'Desenvolver pessoas',ideal:['UNIMAX + PDI','Desempenho','LNT & T&D'],support:['People Analytics','Pesquisas'],why:'criar um ciclo de diagnóstico, desenvolvimento, aplicação e acompanhamento'},
-Turnover:{label:'Reduzir turnover',ideal:['Pesquisas','Onboarding','Desempenho'],support:['UNIMAX + PDI','People Analytics','GPTW'],why:'atuar sobre experiência, causas de saída, integração e perspectiva de desenvolvimento'},
-Cultura:{label:'Fortalecer cultura',ideal:['GPTW','Pesquisas','Onboarding'],support:['UNIMAX + PDI','Max em Movimento'],why:'combinar escuta, experiência, rituais e desenvolvimento alinhado à cultura'},
-Lideranca:{label:'Preparar lideranças',ideal:['Desempenho','UNIMAX + PDI','LNT & T&D'],support:['Sólides','People Analytics'],why:'diagnosticar competências e transformar gaps de liderança em desenvolvimento acompanhado'},
-Experiencia:{label:'Melhorar experiência',ideal:['Onboarding','Pesquisas','GPTW'],support:['MAX PEOPLE','Max em Movimento'],why:'escutar a jornada e melhorar momentos que influenciam pertencimento e experiência'},
-Eficiencia:{label:'Automatizar o RH',ideal:['Automação','MAX PEOPLE','People Analytics'],support:['Sólides'],why:'centralizar fluxos, reduzir tarefas manuais e transformar dados em gestão'},
-Dados:{label:'Decidir com dados',ideal:['People Analytics','MAX PEOPLE','Pesquisas'],support:['Desempenho','Automação'],why:'combinar fontes, indicadores, escuta e rotina de análise para apoiar decisões'},
-Carreira:{label:'Estruturar carreira',ideal:['UNIMAX + PDI','Desempenho','LNT & T&D'],support:['Sólides','People Analytics'],why:'conectar competências, avaliação, PDI, aprendizagem e próximos passos de carreira'}};
-function renderAlignment(selected){const key=goalBtns.find(b=>b.classList.contains('active'))?.dataset.goal||'Desenvolvimento',g=goalConfig[key],idealHits=g.ideal.filter(x=>selected.includes(x)),supportHits=g.support.filter(x=>selected.includes(x));let score=Math.round((idealHits.length/g.ideal.length)*80+(supportHits.length/Math.max(1,g.support.length))*20);score=Math.min(100,score);let level=score>=85?'MUITO ALTA':score>=65?'BOA':score>=40?'PARCIAL':'BAIXA';document.querySelector('#alignmentScore').textContent=score+'% • '+level;document.querySelector('#alignmentTitle').textContent='Objetivo: '+g.label;document.querySelector('#alignmentDiagnosis').textContent=score>=85?'A combinação está muito coerente para '+g.why+'.':score>=65?'A combinação tem boa base para '+g.why+', mas ainda pode fechar algumas lacunas.':'O cenário tem iniciativas relevantes, porém ainda não forma um ciclo suficientemente completo para '+g.why+'.';document.querySelector('#alignmentStrength').textContent=idealHits.length?'Você já selecionou pilares centrais: '+idealHits.join(', ')+'.':'O cenário traz capacidades complementares, mas ainda não inclui os pilares centrais deste objetivo.';const missing=g.ideal.filter(x=>!selected.includes(x));document.querySelector('#alignmentGap').textContent=missing.length?'Para fechar melhor o ciclo, faltam: '+missing.join(', ')+'.':'Os pilares essenciais estão contemplados. O próximo desafio é execução, integração e mensuração.';const add=[...missing,...g.support.filter(x=>!selected.includes(x))].slice(0,2);document.querySelector('#alignmentRecommendation').textContent=add.length?'Considere adicionar '+add.join(' + ')+' para aumentar a aderência ao objetivo escolhido.':'Mantenha a combinação e defina indicadores para acompanhar se o resultado esperado está acontecendo.';}
+Desenvolvimento:{label:'Desenvolver pessoas',why:'criar desenvolvimento contínuo e transformar gaps em evolução'},
+Turnover:{label:'Reduzir turnover',why:'atuar sobre integração, experiência, escuta, desenvolvimento e causas de saída'},
+Cultura:{label:'Fortalecer cultura',why:'reforçar pertencimento, comportamentos, escuta e experiência cultural'},
+Lideranca:{label:'Preparar lideranças',why:'desenvolver competências de gestão, feedback e tomada de decisão'},
+Experiencia:{label:'Melhorar experiência',why:'qualificar a jornada do colaborador e seus principais momentos de contato'},
+Eficiencia:{label:'Automatizar o RH',why:'reduzir esforço operacional, centralizar fluxos e ganhar escala'},
+Dados:{label:'Decidir com dados',why:'transformar informações de pessoas em diagnóstico e decisão'},
+Carreira:{label:'Estruturar carreira',why:'conectar competências, desempenho, desenvolvimento e próximos passos'}};
+// Aderência qualitativa de cada iniciativa a cada objetivo. Nenhuma iniciativa útil é tratada como contribuição zero.
+const alignmentMatrix={
+'Max em Movimento':{Desenvolvimento:25,Turnover:55,Cultura:75,Lideranca:20,Experiencia:82,Eficiencia:10,Dados:15,Carreira:10},
+'NR-1 & Saúde Mental':{Desenvolvimento:30,Turnover:65,Cultura:58,Lideranca:48,Experiencia:78,Eficiencia:25,Dados:48,Carreira:15},
+'GPTW':{Desenvolvimento:48,Turnover:78,Cultura:96,Lideranca:55,Experiencia:92,Eficiencia:20,Dados:55,Carreira:28},
+'UNIMAX + PDI':{Desenvolvimento:98,Turnover:84,Cultura:72,Lideranca:92,Experiencia:70,Eficiencia:35,Dados:55,Carreira:98},
+'LNT & T&D':{Desenvolvimento:94,Turnover:68,Cultura:62,Lideranca:88,Experiencia:60,Eficiencia:38,Dados:52,Carreira:86},
+'Onboarding':{Desenvolvimento:52,Turnover:84,Cultura:86,Lideranca:35,Experiencia:96,Eficiencia:48,Dados:30,Carreira:35},
+'Sólides':{Desenvolvimento:68,Turnover:62,Cultura:48,Lideranca:72,Experiencia:50,Eficiencia:72,Dados:78,Carreira:65},
+'Desempenho':{Desenvolvimento:96,Turnover:76,Cultura:70,Lideranca:94,Experiencia:66,Eficiencia:45,Dados:82,Carreira:96},
+'People Analytics':{Desenvolvimento:62,Turnover:82,Cultura:55,Lideranca:75,Experiencia:58,Eficiencia:88,Dados:100,Carreira:72},
+'Pesquisas':{Desenvolvimento:58,Turnover:88,Cultura:94,Lideranca:68,Experiencia:95,Eficiencia:42,Dados:90,Carreira:48},
+'Automação':{Desenvolvimento:28,Turnover:32,Cultura:25,Lideranca:38,Experiencia:58,Eficiencia:100,Dados:88,Carreira:22},
+'MAX PEOPLE':{Desenvolvimento:55,Turnover:50,Cultura:45,Lideranca:55,Experiencia:82,Eficiencia:96,Dados:94,Carreira:48}};
+const synergyRules=[
+{items:['UNIMAX + PDI','Desempenho'],goals:['Desenvolvimento','Lideranca','Carreira'],bonus:8,label:'Avaliação + PDI/UNIMAX fecha o ciclo entre diagnóstico e desenvolvimento.'},
+{items:['UNIMAX + PDI','LNT & T&D'],goals:['Desenvolvimento','Carreira'],bonus:6,label:'LNT + UNIMAX conecta necessidades coletivas e trilhas de aprendizagem.'},
+{items:['Onboarding','GPTW'],goals:['Cultura','Experiencia','Turnover'],bonus:6,label:'Onboarding + GPTW conecta experiência de entrada à cultura desejada.'},
+{items:['Onboarding','Pesquisas'],goals:['Experiencia','Turnover','Cultura'],bonus:6,label:'Onboarding + escuta permite medir e ajustar a experiência de entrada.'},
+{items:['GPTW','Pesquisas'],goals:['Cultura','Experiencia','Turnover'],bonus:7,label:'GPTW + escuta transforma percepção em diagnóstico e plano de ação.'},
+{items:['People Analytics','Pesquisas'],goals:['Dados','Turnover'],bonus:6,label:'Analytics + escuta combina indicadores objetivos e percepção das pessoas.'},
+{items:['Automação','MAX PEOPLE'],goals:['Eficiencia','Dados','Experiencia'],bonus:8,label:'Automação + MAX PEOPLE centraliza a operação e cria escala digital.'},
+{items:['MAX PEOPLE','People Analytics'],goals:['Dados','Eficiencia'],bonus:7,label:'MAX PEOPLE + Analytics conecta centralização, indicadores e decisão.'},
+{items:['NR-1 & Saúde Mental','Pesquisas'],goals:['Experiencia','Cultura','Turnover'],bonus:5,label:'Prevenção + escuta amplia a leitura sobre fatores psicossociais e experiência.'}}];
+const recommendedByGoal={
+Desenvolvimento:['UNIMAX + PDI','Desempenho','LNT & T&D','People Analytics'],
+Turnover:['Pesquisas','Onboarding','People Analytics','UNIMAX + PDI','GPTW'],
+Cultura:['GPTW','Pesquisas','Onboarding','UNIMAX + PDI'],
+Lideranca:['Desempenho','UNIMAX + PDI','LNT & T&D','Sólides'],
+Experiencia:['Onboarding','Pesquisas','GPTW','MAX PEOPLE','NR-1 & Saúde Mental'],
+Eficiencia:['Automação','MAX PEOPLE','People Analytics','Sólides'],
+Dados:['People Analytics','MAX PEOPLE','Pesquisas','Automação','Desempenho'],
+Carreira:['UNIMAX + PDI','Desempenho','LNT & T&D','People Analytics']};
+function renderAlignment(selected){
+ const key=goalBtns.find(b=>b.classList.contains('active'))?.dataset.goal||'Desenvolvimento',g=goalConfig[key];
+ if(!selected.length){document.querySelector('#alignmentScore').textContent='—';return;}
+ const vals=selected.map(x=>alignmentMatrix[x]?.[key]||10).sort((a,b)=>b-a);
+ // Melhor iniciativa pesa mais; complementares elevam cobertura sem inflar artificialmente o resultado.
+ let score=vals[0]; if(vals.length>1) score+=vals.slice(1).reduce((a,v)=>a+v*0.10,0);
+ const activeSynergies=synergyRules.filter(r=>r.goals.includes(key)&&r.items.every(x=>selected.includes(x)));
+ score+=activeSynergies.reduce((a,r)=>a+r.bonus,0); score=Math.min(100,Math.round(score));
+ const level=score>=90?'MUITO ALTA':score>=75?'ALTA':score>=55?'BOA':score>=35?'PARCIAL':'BAIXA';
+ document.querySelector('#alignmentScore').textContent=score+'% • '+level;
+ document.querySelector('#alignmentTitle').textContent='Objetivo: '+g.label;
+ const strongest=selected.slice().sort((a,b)=>(alignmentMatrix[b]?.[key]||0)-(alignmentMatrix[a]?.[key]||0)).slice(0,3);
+ document.querySelector('#alignmentDiagnosis').textContent=(score>=75?'A combinação está bem alinhada para ':'O cenário contribui para ')+g.why+'. '+(activeSynergies[0]?.label||'A leitura considera a contribuição individual de cada iniciativa e como elas se complementam.');
+ document.querySelector('#alignmentStrength').textContent='Maiores contribuições neste objetivo: '+strongest.map(x=>x+' ('+(alignmentMatrix[x]?.[key]||10)+'%)').join(', ')+'.';
+ const candidates=recommendedByGoal[key].filter(x=>!selected.includes(x)).map(x=>[x,alignmentMatrix[x][key]]).sort((a,b)=>b[1]-a[1]);
+ const weakDims=[]; const dimMap={Cultura:0,Desenvolvimento:1,Experiencia:2,Eficiencia:3,Dados:4,Prevenção:5};
+ if(typeof strategyData!=='undefined'){Object.entries(dimMap).forEach(([d,i])=>{const avg=Math.round(selected.reduce((a,x)=>a+(strategyData[x]?.w[i]||0),0)/selected.length);if(avg<12)weakDims.push(d)})}
+ document.querySelector('#alignmentGap').textContent=candidates.length?'Para ampliar a estratégia, ainda há espaço para '+candidates.slice(0,2).map(x=>x[0]).join(' + ')+'.'+(weakDims.length?' Dimensões pouco cobertas: '+weakDims.slice(0,2).join(' e ')+'.':''):'A seleção já cobre as principais iniciativas associadas ao objetivo. O foco passa a ser integração, execução e mensuração.';
+ document.querySelector('#alignmentRecommendation').textContent=candidates.length?'Próximo complemento sugerido: '+candidates[0][0]+' — aderência individual de '+candidates[0][1]+'% a este objetivo.':'Mantenha o portfólio e defina indicadores de resultado para validar a evolução ao longo de 2027.';
+}
 document.querySelector('.generateRoadmap')?.addEventListener('click',()=>{const selected=roadmapButtons.filter(b=>b.classList.contains('active')).map(b=>b.dataset.item),out=document.querySelector('.strategyResult');renderAlignment(selected);if(!selected.length){out.classList.add('show');document.querySelector('#strategyTitle').textContent='Selecione pelo menos uma prioridade';document.querySelector('#strategyText').textContent='Escolha as iniciativas que deseja comparar para gerar uma leitura estratégica.';return}let scores=[0,0,0,0,0,0];selected.forEach(x=>strategyData[x].w.forEach((v,i)=>scores[i]+=v));const max=Math.max(...scores)||1;scores=scores.map(v=>Math.round(v/max*100));document.querySelector('#impactGrid').innerHTML=dims.map((d,i)=>`<div class="impactCard"><div class="impactHead"><span>${d}</span><span>${scores[i]}%</span></div><div class="impactBar"><div class="impactFill" style="width:${scores[i]}%"></div></div></div>`).join('');const rank=scores.map((v,i)=>[v,i]).sort((a,b)=>b[0]-a[0]);const top=dims[rank[0][1]],second=dims[rank[1][1]],low=dims[rank[rank.length-1][1]];document.querySelector('#strategyTitle').textContent=`Estratégia formada: ${top} + ${second}`;document.querySelector('#strategyText').textContent=`Sua combinação concentra maior impacto em ${top.toLowerCase()} e ${second.toLowerCase()}. As prioridades se complementam para construir uma atuação de RH mais estruturada e conectada.`;document.querySelector('#strategyFlow').innerHTML=({Cultura:['ESCUTAR','ALINHAR','ENGAJAR','EVOLUIR'],Desenvolvimento:['DIAGNOSTICAR','DESENVOLVER','APLICAR','MEDIR'],Experiência:['ACOLHER','ESCUTAR','AGIR','EVOLUIR'],Eficiência:['MAPEAR','AUTOMATIZAR','CENTRALIZAR','GANHAR ESCALA'],Dados:['CENTRALIZAR','MEDIR','ANALISAR','DECIDIR'],Prevenção:['MAPEAR','PREVENIR','ACOMPANHAR','REVISAR']}[top]).map(x=>`<span>${x}</span>`).join('<b>→</b>');document.querySelector('#strategyAttention').innerHTML=`<b>Ponto de atenção:</b> ${low} aparece com menor ênfase neste cenário. Isso não significa uma falha; mostra onde a estratégia escolhida está investindo menos energia.`;document.querySelector('#initiativeImpact').innerHTML=selected.map(x=>`<article><small>IMPACTO ESTRATÉGICO</small><h4>${x}</h4><b>${strategyData[x].goal}</b><p>${strategyData[x].result}</p></article>`).join('');['q1','q2','q3','q4'].forEach((id,i)=>{document.querySelector('#'+id).innerHTML=selected.map(x=>`<li><b>${x}:</b> ${strategyData[x].q[i]}</li>`).join('')});out.classList.add('show');out.scrollIntoView({behavior:'smooth',block:'start'})});
 
     </script>
