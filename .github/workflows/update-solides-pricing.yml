@@ -1,0 +1,56 @@
+name: Atualizar proposta Solides
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/update-solides-pricing.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-pricing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Atualizar valores da proposta Sólides
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+
+          old = '''              <div>\n                <b>R$ 19.975,07</b>investimento estimado no 1º ano, com\n                implantação\n              </div>\n              <div><b>R$ 23,20</b>valor informado por colaborador</div>\n              <div><b>164 testes</b>de perfil comportamental por ano</div>\n              <div><b>32 vagas</b>anuais para recrutamento e seleção</div>'''
+          new = '''              <div>\n                <b>R$ 951,19/mês</b>1º ao 4º mês • condição especial com 50% de desconto\n              </div>\n              <div><b>R$ 1.902,39/mês</b>a partir da 5ª mensalidade</div>\n              <div><b>R$ 951,19</b>implantação • taxa única com 50% de desconto</div>\n              <div><b>Até 90 colaboradores</b>sem aumento da mensalidade</div>\n              <div><b>R$ 23,20</b>valor informado por colaborador</div>\n              <div><b>164 testes</b>de perfil comportamental por ano</div>\n              <div><b>32 vagas</b>anuais para recrutamento e seleção</div>'''
+          if old not in s:
+              raise SystemExit('Bloco principal da proposta não encontrado')
+          s = s.replace(old, new, 1)
+
+          old_roi = '''            <div>\n              <small>Investimento no 1º ano</small><strong>R$ 19.975</strong\n              ><span>mensalidades + implantação</span>\n            </div>'''
+          new_roi = '''            <div>\n              <small>Condição promocional • 1º ao 4º mês</small\n              ><strong>R$ 951,19/mês</strong\n              ><span>50% de desconto nas quatro primeiras mensalidades</span>\n            </div>'''
+          if old_roi not in s:
+              raise SystemExit('Bloco financeiro da proposta não encontrado')
+          s = s.replace(old_roi, new_roi, 1)
+
+          old_be = '''            <div>\n              <small>Ponto de equilíbrio estimado</small><strong>24,4%</strong\n              ><span>da base anualizada evitável</span>\n            </div>\n            <div>\n              <small>Ganho líquido a 30%</small><strong>R$ 4.564</strong\n              ><span>antes de custos indiretos</span>\n            </div>'''
+          new_be = '''            <div>\n              <small>A partir do 5º mês</small><strong>R$ 1.902,39/mês</strong\n              ><span>mensalidade regular da proposta</span>\n            </div>\n            <div>\n              <small>Implantação</small><strong>R$ 951,19</strong\n              ><span>taxa única com 50% de desconto</span>\n            </div>'''
+          if old_be not in s:
+              raise SystemExit('Cards de ROI não encontrados')
+          s = s.replace(old_be, new_be, 1)
+
+          old_text = '''          <p>\n            Usando a média mensal da base evitável nos sete relatórios\n            recebidos, o run rate anual seria de aproximadamente R$ 81,8 mil.\n            Uma redução de 30% equivaleria a R$ 24,5 mil; a referência comercial\n            da Sólides cita redução média de 43%, que equivaleria a R$ 35,2 mil.\n            Esta referência é uma alegação do fornecedor, não garantia de\n            resultado para a Max.\n          </p>'''
+          new_text = '''          <p>\n            A proposta comercial apresenta uma condição promocional de 50% nas\n            quatro primeiras mensalidades: R$ 951,19 por mês. A partir da 5ª\n            mensalidade, o valor passa a R$ 1.902,39 por mês. A implantação é\n            uma taxa única de R$ 951,19, também com 50% de desconto. A proposta\n            considera 82 colaboradores e prevê margem até 90 colaboradores sem\n            aumento da mensalidade.\n          </p>'''
+          if old_text not in s:
+              raise SystemExit('Texto da leitura financeira não encontrado')
+          s = s.replace(old_text, new_text, 1)
+
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit da atualização
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Atualiza valores mensais da proposta Sólides"
+          git push
