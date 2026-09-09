@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0
       - name: Sincronizar versão atual
         run: git pull --rebase origin main
-      - name: Reconstruir interação do simulador
+      - name: Instalar motor isolado do simulador
         run: python scripts/fix_simulator_clicks.py
       - name: Publicar correção
         run: |
@@ -31,7 +31,7 @@ jobs:
           git config user.email github-actions@github.com
           git add index.html
           if ! git diff --cached --quiet; then
-            git commit -m "Reconstrói botão e resultado do simulador MAX 2027"
+            git commit -m "Isola motor funcional do simulador MAX 2027"
             git pull --rebase origin main
             git push origin main
           fi
