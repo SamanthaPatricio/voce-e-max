@@ -1171,7 +1171,9 @@
           white-space: normal;
         }
       }
-    </style>
+    .unimaxHero{background:linear-gradient(135deg,#071e45,#0d3a74);color:#fff;border-radius:28px;padding:34px}.unimaxHero h2{margin:8px 0;font-size:clamp(2rem,5vw,4rem)}.unimaxHero h2 span{color:#ffcd19}.unimaxHero p{max-width:760px;color:#e9eef7}.buildingPath{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:24px}.floor{background:#fff;color:#071e45;border-radius:18px;padding:18px 14px;min-height:145px}.floor b{display:block;margin:7px 0}.floor small{color:#59657a}.floor .ico{font-size:1.55rem}.unimaxQuote{margin-top:18px;padding:18px;border-left:4px solid #ffcd19;background:rgba(255,255,255,.08);border-radius:0 14px 14px 0}.unimaxTags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.unimaxTags span{background:#eef3fa;color:#071e45;border-radius:999px;padding:8px 12px;font-size:.8rem;font-weight:700}.roadmapBox{margin-top:28px;background:#fff;border:1px solid #dfe5ee;border-radius:28px;padding:28px}.initiativeGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.initiative{border:1px solid #dfe5ee;background:#f7f8fb;border-radius:16px;padding:14px;text-align:left;cursor:pointer;font:inherit;color:#101828}.initiative strong,.initiative span{display:block}.initiative span{font-size:.78rem;color:#59657a;margin-top:4px}.initiative.active{border-color:#071e45;background:#071e45;color:#fff}.initiative.active span{color:#dbe6f7}.initiative:before{font-size:.65rem;font-weight:800}.initiative[data-status="ja"]:before{content:"JÁ É MAX ✓";color:#1c8b69}.initiative[data-status="andamento"]:before{content:"EM MOVIMENTO";color:#b77700}.initiative[data-status="2027"]:before{content:"PLANO 2027";color:#0d3a74}.initiative.active:before{color:#ffcd19}.generateRoadmap{border:0;background:#ffcd19;color:#071e45;font-weight:800;border-radius:999px;padding:14px 22px;cursor:pointer}.roadmapResult{display:none;margin-top:20px;border-top:1px solid #dfe5ee;padding-top:20px}.roadmapResult.show{display:block}.timeline2027{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}.quarter{background:#f7f8fb;border-radius:16px;padding:16px}.quarter b{color:#071e45}.quarter ul{padding-left:18px;margin:10px 0 0;font-size:.86rem}@media(max-width:900px){.buildingPath{grid-template-columns:repeat(2,1fr)}.initiativeGrid,.timeline2027{grid-template-columns:1fr 1fr}}@media(max-width:560px){.buildingPath,.initiativeGrid,.timeline2027{grid-template-columns:1fr}.unimaxHero,.roadmapBox{padding:20px}}
+
+</style>
   <style id="hero-nudge-only">
 .animatedClaim{transform:translateY(-18px)!important;}
 </style>
@@ -2216,6 +2218,30 @@
       </div>
     </section>
 
+    <section id="unimax"><div class="shell">
+      <div class="sectionHead"><div><div class="kicker">Desenvolvimento & carreira</div><h2>UNIMAX — Universidade Corporativa</h2></div><p>A aprendizagem ganha uma linguagem própria da Max: cada colaborador constrói sua trajetória, abre portas e conquista novas chaves.</p></div>
+      <div class="unimaxHero"><div class="kicker" style="color:#ffcd19">CONSTRUA SUA TRAJETÓRIA</div><h2>Conhecimento que <span>abre portas.</span> 🔑</h2><p>A UNIMAX conecta LNT, competências, função, avaliação de desempenho e PDI. Cada pessoa terá uma jornada coerente com sua função, equipe, gaps e próximos passos de carreira.</p>
+        <div class="buildingPath"><div class="floor"><div class="ico">🏗️</div><b>Fundação</b><small>Ser Max: cultura, história, ética, processos e integração.</small></div><div class="floor"><div class="ico">🏢</div><b>1º Andar</b><small>Projeto da Função: sistemas, técnica, rotinas e indicadores.</small></div><div class="floor"><div class="ico">🚪</div><b>2º Andar</b><small>Excelência Max: atendimento, comunicação e colaboração.</small></div><div class="floor"><div class="ico">🪟</div><b>3º Andar</b><small>PDI personalizado conforme competências e oportunidades.</small></div><div class="floor"><div class="ico">🔑</div><b>4º Andar</b><small>Próximo passo: preparação para novos desafios e carreira.</small></div><div class="floor"><div class="ico">🌇</div><b>Terraço</b><small>Novos horizontes: inovação, IA, mercado e conteúdos livres.</small></div></div>
+        <div class="unimaxQuote"><b>PDI com significado Max:</b> Planta de Desenvolvimento Individual. A avaliação identifica o gap, a planta define o desenvolvimento, a UNIMAX abre a porta e a evolução é acompanhada.</div></div>
+      <div class="unimaxTags"><span>🔑 Chave = certificação</span><span>🚪 Porta aberta = aprendizagem concluída</span><span>🪟 Janela = conteúdo rápido</span><span>🏗️ Em construção = PDI</span><span>🏛️ Hall do Conhecimento = biblioteca</span></div>
+      <div class="roadmapBox" id="roadmap2027"><div class="sectionHead"><div><div class="kicker">MAX 2027 • decisão interativa</div><h2>Simular o RH da Max em 2027</h2></div><p>Escolha onde a Max deve concentrar energia. O roadmap separa o que já é Max, o que está em movimento e as prioridades de 2027.</p></div>
+        <div class="initiativeGrid">
+          <button type="button" class="initiative" data-status="ja" data-item="Max em Movimento"><strong>Max em Movimento</strong><span>Programa feminino já existente, integrado às ações de saúde mental e prevenção.</span></button>
+          <button type="button" class="initiative" data-status="andamento" data-item="NR-1 & Saúde Mental"><strong>NR-1 & Saúde Mental</strong><span>Prevenção, riscos psicossociais, evidências e acompanhamento.</span></button>
+          <button type="button" class="initiative" data-status="andamento" data-item="GPTW"><strong>GPTW</strong><span>Primeiros passos, diagnóstico, escuta e evolução da cultura.</span></button>
+          <button type="button" class="initiative active" data-status="2027" data-item="UNIMAX + PDI"><strong>UNIMAX + PDI</strong><span>Trilhas por função, Planta de Desenvolvimento Individual e Chaves Max.</span></button>
+          <button type="button" class="initiative" data-status="2027" data-item="LNT & T&D"><strong>LNT & T&D</strong><span>Calendário 2027, desenvolvimento e ações por público.</span></button>
+          <button type="button" class="initiative" data-status="2027" data-item="Onboarding"><strong>Onboarding</strong><span>Experiência estruturada desde a chegada até 90 dias.</span></button>
+          <button type="button" class="initiative" data-status="2027" data-item="Sólides"><strong>Sólides</strong><span>Perfil comportamental, R&S e apoio à jornada.</span></button>
+          <button type="button" class="initiative" data-status="2027" data-item="Desempenho"><strong>Avaliação de Desempenho</strong><span>Competências, PDI, OKRs, 360° e evolução.</span></button>
+          <button type="button" class="initiative" data-status="2027" data-item="People Analytics"><strong>People Analytics</strong><span>Indicadores para decisões de pessoas e liderança.</span></button>
+          <button type="button" class="initiative" data-status="2027" data-item="Pesquisas"><strong>Pesquisas & Escuta</strong><span>Clima, pulse, experiência e planos de ação.</span></button>
+          <button type="button" class="initiative" data-status="2027" data-item="Automação"><strong>Automação do RH</strong><span>Fluxos, ponto, solicitações, dados e eficiência.</span></button>
+          <button type="button" class="initiative" data-status="2027" data-item="MAX PEOPLE"><strong>MAX PEOPLE + Maxiane</strong><span>Portal próprio, IA e experiência digital de RH.</span></button>
+        </div><button type="button" class="generateRoadmap">Gerar Roadmap MAX 2027 →</button>
+        <div class="roadmapResult" aria-live="polite"><h3>O RH Max que estamos construindo</h3><p id="roadmapSummary"></p><div class="timeline2027"><div class="quarter"><b>Q1 • Fundação</b><ul id="q1"></ul></div><div class="quarter"><b>Q2 • Estrutura</b><ul id="q2"></ul></div><div class="quarter"><b>Q3 • Desenvolvimento</b><ul id="q3"></ul></div><div class="quarter"><b>Q4 • Cobertura</b><ul id="q4"></ul></div></div></div>
+      </div></div></section>
+
     <section class="finish">
       <div class="shell">
         <div class="eyebrow" style="justify-content: center">
@@ -2323,6 +2349,11 @@
               ),
             );
         });
+const roadmapButtons=[...document.querySelectorAll('.initiative')];
+roadmapButtons.forEach(b=>b.addEventListener('click',()=>b.classList.toggle('active')));
+const roadmapMap={'Max em Movimento':['Q1','Q2','Q3','Q4'],'NR-1 & Saúde Mental':['Q1','Q2','Q3','Q4'],'GPTW':['Q1','Q2','Q3','Q4'],'UNIMAX + PDI':['Q1','Q2','Q3','Q4'],'LNT & T&D':['Q1','Q2','Q3','Q4'],'Onboarding':['Q1','Q2'],'Sólides':['Q1','Q2'],'Desempenho':['Q2','Q3','Q4'],'People Analytics':['Q2','Q3','Q4'],'Pesquisas':['Q1','Q2','Q3','Q4'],'Automação':['Q1','Q2','Q3'],'MAX PEOPLE':['Q1','Q2','Q3','Q4']};
+document.querySelector('.generateRoadmap')?.addEventListener('click',()=>{const selected=roadmapButtons.filter(b=>b.classList.contains('active')).map(b=>b.dataset.item),out=document.querySelector('.roadmapResult');if(!selected.length){document.querySelector('#roadmapSummary').textContent='Selecione pelo menos uma iniciativa para construir o roadmap.';['q1','q2','q3','q4'].forEach(id=>document.querySelector('#'+id).innerHTML='');out.classList.add('show');return}document.querySelector('#roadmapSummary').textContent=selected.length+' iniciativas priorizadas • desenvolvimento contínuo • cultura • prevenção • experiência • dados para decisão.';['Q1','Q2','Q3','Q4'].forEach(q=>{const el=document.querySelector('#'+q.toLowerCase());el.innerHTML=selected.filter(x=>roadmapMap[x]?.includes(q)).map(x=>'<li>'+x+'</li>').join('')||'<li>Consolidar e acompanhar</li>'});out.classList.add('show');out.scrollIntoView({behavior:'smooth',block:'nearest'})});
+
     </script>
   </body>
 </html>
